@@ -1,0 +1,37 @@
+--------------
+修改运行声明
+--------------
+django.get_version()  -> 1.4 
+
+
+---------------
+settings.py
+---------------
+
+运行时需要修改MEDIA_ROOT配置，用来指定image的上传文件夹路径
+同时需要指定MEDIA_URL，用来提供URL访问路径
+TEMPLAT_DIRS则根据自己情况修改即可
+
+MEDIA_ROOT = '/home/freetstar/workspace/py/django/gallery/media/'
+MEDIA_URL = 'media/'
+TEMPLATE_DIRS = (
+    "/home/freetstar/workspace/py/django/gallery/templates",
+)
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'items',
+     'django.contrib.admin',
+    # 'django.contrib.admindocs',
+)
+
+
+------------------
+urls.py
+------------------
+
+urlpattern增加了对media的资源的访问和资源请求，同时修改了templates中对应模板文件的，对图片和缩略图的thumb_url添加了/前缀
